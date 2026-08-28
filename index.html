@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Bella — Pizzaria Artesanal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2-family=Merriweather:wght@400;700&family=Nunito:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍕</text></svg>">
+</head>
+<body>
+    <!-- Header / Hero -->
+    <header class="hero" id="top">
+        <nav class="navbar">
+            <div class="logo">🍕 Pizza Bella</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#gallery">Fotos</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#order" class="btn-order-nav">Pedir</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">&#9776;</div>
+        </nav>
+        <div class="hero-content">
+            <h1>Pizza Bella</h1>
+            <p class="subtitle">Pizzas artesanais feitas com amor e ingredientes premium</p>
+            <a href="#order" class="btn-hero">Peça Agora</a>
+        </div>
+        <div class="hero-flower"></div>
+        <div class="hero-flower hero-flower-2"></div>
+    </header>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <img src="https://images.unsplash.com/photo-1513104880128-5bc6eb3ac5b1?auto=format&fit=crop&w=800&q=60" alt="Pizzaria" class="about-img">
+            <div class="about-text">
+                <h2>Nossa História</h2>
+                <p>Fundada em 2010, a Pizza Bella traz o autêntico sabor da Itália para sua mesa. Nossos pizzaiolos treinados em Nápoles usam técnicas tradicionais e ingredientes importados para criar pizzas que celebram a simplicidade e a qualidade.</p>
+                <p>Ingredientes selecionados, massa fermentada naturalmente por 48 horas e forno de lenha com madeira de carvalho. Cada pizza é uma celebração da tradição.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu-section" id="menu">
+        <div class="section-header">
+            <h2>Nosso Cardápio</h2>
+            <p>Pizzas artesanais e especiais</p>
+        </div>
+        <div class="menu-tabs" id="menuTabs">
+            <button class="tab-btn active" data-tab="classic">Clássicas</button>
+            <button class="tab-btn" data-tab="special">Especiais</button>
+            <button class="tab-btn" data-tab="dessert">Doces</button>
+        </div>
+        <div class="menu-content" id="menuContent">
+            <!-- Classic pizzas loaded by JS -->
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <h2>Galeria de Fotos</h2>
+            <p>Um olhar pela nossa arte</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery loaded by JS -->
+        </div>
+    </section>
+
+    <!-- Order -->
+    <section class="order-section" id="order">
+        <div class="section-header">
+            <h2>Faça seu Pedido</h2>
+            <p>Preencha o formulário e aguarde nosso contato</p>
+        </div>
+        <form class="order-form" id="orderForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Nome completo *</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone / WhatsApp *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="pizza-type">Tipo de Pizza *</label>
+                <select id="pizza-type" required>
+                    <option value="">Selecione uma pizza</option>
+                    <option value="classic">Clássica</option>
+                    <option value="special">Especial</option>
+                    <option value="dessert">Doce</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pizza-choice">Sabor escolhido *</label>
+                <select id="pizza-choice" required>
+                    <option value="">Selecione um sabor</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="size">Tamanho *</label>
+                    <select id="size" required>
+                        <option value="p">Pequena (25cm) — R$ 35</option>
+                        <option value="m" selected>Média (30cm) — R$ 45</option>
+                        <option value="g">Grande (35cm) — R$ 55</option>
+                        <option value="gg">Família (40cm) — R$ 65</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantidade *</label>
+                    <input type="number" id="quantity" min="1" value="1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="observations">Observações</label>
+                <textarea id="observations" rows="3" placeholder="Sem cebola, borda recheada, entrega rápida..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="address">Endereço de entrega *</label>
+                <textarea id="address" rows="2" placeholder="Rua, número, bairro, cidade" required></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Confirmar Pedido</button>
+                <span class="total-display" id="totalDisplay">Total: R$ 45,00</span>
+            </div>
+            <p class="form-note">* Campos obrigatórios. Entregamos em toda a cidade. Tempo médio de entrega: 30-45 min.</p>
+            <div class="form-success" id="formSuccess">
+                <div class="success-content">
+                    <span class="success-icon">✓</span>
+                    <h3>Pedido recebido!</h3>
+                    <p>Nossa equipe entrará em contato em breve para confirmar seu pedido.</p>
+                    <button class="btn-new-order" id="btnNewOrder">Fazer novo pedido</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3>🍕 Pizza Bella</h3>
+                <p>Sabor autêntico da Itália no coração da sua cidade.</p>
+                <div class="social">
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Horário de Funcionamento</h3>
+                <p>Seg–Qui: 11h – 23h</p>
+                <p>Sex–Sáb: 11h – 00h</p>
+                <p>Dom: 12h – 22h</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <p>📞 (11) 98765-4321</p>
+                <p>✉️ contato@pizzabella.com.br</p>
+                <p>📍 Rua das Flores, 123 — Centro</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pizza Bella — Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" id="backToTop">↑</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
