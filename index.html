@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas - PUB DEV LOOP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="icon">✓</span> Minhas Tarefas</h1>
+        </header>
+
+        <section class="form-section">
+            <form id="task-form">
+                <div class="input-wrapper">
+                    <input type="text" id="task-input" placeholder="O que precisa ser feito?" required>
+                    <button type="submit" class="add-btn"><span class="icon">+</span></button>
+                </div>
+            </form>
+        </section>
+
+        <section class="tasks-section" id="tasks-section">
+            <p class="empty-state" id="empty-state">Nenhuma tarefa adicionada ainda</p>
+            <ul class="tasks-list" id="tasks-list"></ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
