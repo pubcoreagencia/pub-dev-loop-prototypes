@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUB DEV LOOP - Project Continuity Template</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>PUB DEV LOOP</h1>
+        <p>Continuity Template for Persistent Development</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Template Overview</h2>
+            <p>This is a generic continuity template for PUB DEV LOOP projects. It provides the minimal documentation and scripts required to enable any project to be resumed, validated, and checkpointed solely from the Git repository.</p>
+        </section>
+
+        <section class="card">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Persistence-First Continuity - Repository is the source of truth</li>
+                <li>Master Context Management - Clear project identification and responsibilities</li>
+                <li>Checkpoint Strategy - Record meaningful state changes</li>
+                <li>Resume Strategy - Reconstruct last checkpoint state</li>
+                <li>Runtime Agnostic - No specific provider references</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Current State</h2>
+            <p>This repository contains placeholder documentation files that should be customized for concrete projects:</p>
+            <ul>
+                <li><strong>PROJECT_HANDOFF.md</strong> - Handoff documentation for project continuity</li>
+                <li><strong>PROJECT_STATE.md</strong> - Current project state snapshot</li>
+                <li><strong>MASTER_CONTEXT.md</strong> - Master context definition</li>
+                <li><strong>README_FOR_AGENTS.md</strong> - Agent usage instructions</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Development Commands</h2>
+            <div class="code-block">
+                <code># Validate project state
+npm run devloop:validate</code>
+                <code># Create checkpoint after meaningful changes
+npm run devloop:checkpoint</code>
+                <code># Resume on fresh clone
+npm run devloop:resume</code>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© PUB DEV LOOP - Runtime Preview</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
