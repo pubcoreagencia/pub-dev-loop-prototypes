@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkMaster - Controle de Parque de Diversões</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="logo">🎢 <span class="logo-sub">ParkMaster</span></h1>
+        <p class="subtitle">Sistema de Controle de Parque</p>
+      </div>
+      <div class="header-right">
+        <div class="user-panel">
+          <span class="user-name">Operador</span>
+          <button class="btn-logout">Sair</button>
+        </div>
+        <div class="clock">—</div>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="nav-item active" data-section="dashboard">
+          <div class="nav-icon">📊</div>
+          <span class="nav-label">Dashboard</span>
+        </li>
+        <li class="nav-item" data-section="atracoes">
+          <div class="nav-icon">🎠</div>
+          <span class="nav-label">Atrações</span>
+        </li>
+        <li class="nav-item" data-section="bilhetes">
+          <div class="nav-icon">🎫</div>
+          <span class="nav-label">Bilhetes</span>
+        </li>
+        <li class="nav-item" data-section="equipe">
+          <div class="nav-icon">👥</div>
+          <span class="nav-label">Equipe</span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Dashboard Section -->
+      <section class="section active" id="dashboard-section">
+        <div class="section-header">
+          <h2>📊 Painel Principal</h2>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card card--primary" data-metric="visitantes">
+            <div class="metric-icon">👥</div>
+            <div class="metric-info">
+              <div class="metric-value" id="visitantes-value">0</div>
+              <div class="metric-label">Visitantes Hoje</div>
+            </div>
+            <div class="metric-progress">
+              <div class="metric-progress-fill" style="width: 72%"></div>
+            </div>
+            <div class="metric-subtext">Meta: 5.000</div>
+          </div>
+          <div class="metric-card card--success" data-metric="receita">
+            <div class="metric-icon">💰</div>
+            <div class="metric-info">
+              <div class="metric-value" id="receita-value">R$ 0</div>
+              <div class="metric-label">Receita Hoje</div>
+            </div>
+            <div class="metric-progress">
+              <div class="metric-progress-fill" style="width: 65%"></div>
+            </div>
+            <div class="metric-subtext">Meta: R$ 15.000</div>
+          </div>
+          <div class="metric-card card--info" data-metric="atracoes-operacionais">
+            <div class="metric-icon">🎢</div>
+            <div class="metric-info">
+              <div class="metric-value" id="atracoes-value">0</div>
+              <div class="metric-label">Atrações Operacionais</div>
+            </div>
+            <div class="metric-progress">
+              <div class="metric-progress-fill" style="width: 88%"></div>
+            </div>
+            <div class="metric-subtext">Meta: 12</div>
+          </div>
+          <div class="metric-card card--warning" data-metric="tempo-fila">
+            <div class="metric-icon">⏱️</div>
+            <div class="metric-info">
+              <div class="metric-value" id="tempo-value">0</div>
+              <div class="metric-label">Tempo Médio Fila</div>
+            </div>
+            <div class="metric-progress">
+              <div class="metric-progress-fill" style="width: 45%"></div>
+            </div>
+            <div class="metric-subtext">Meta: < 30 min</div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>📈 Visitantes - Últimos 7 Dias</h3>
+            </div>
+            <canvas id="visitorChart" height="200"></canvas>
+          </div>
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>⚠️ Status das Atrações</h3>
+            </div>
+            <div class="status-grid" id="attractionStatusGrid">
+              <!-- Dinâmico -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Atractions Section -->
+      <section class="section" id="atracoes-section">
+        <div class="section-header">
+          <h2>🎠 Gestão de Atrações</h2>
+          <button class="btn-add" id="btn-add-atracao">Adicionar Nova Atração</button>
+        </div>
+        <div class="attractions-list" id="attractions-list">
+          <!-- Dinâmico -->
+        </div>
+      </section>
+
+      <!-- Tickets Section -->
+      <section class="section" id="bilhetes-section">
+        <div class="section-header">
+          <h2>🎫 Gestão de Bilhetes</h2>
+        </div>
+        <div class="tickets-grid" id="tickets-grid">
+          <!-- Dinâmico -->
+        </div>
+      </section>
+
+      <!-- Team Section -->
+      <section class="section" id="equipe-section">
+        <div class="section-header">
+          <h2>👥 Gestão de Equipe</h2>
+        </div>
+        <div class="team-list" id="team-list">
+          <!-- Dinâmico -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add Atração Modal -->
+  <div class="modal" id="atracao-modal" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Fechar modal" onclick="closeAtracaoModal()">&times;</button>
+      <h3 class="modal-title" id="modal-title">Nova Atração</h3>
+      <form class="modal-form" id="atracao-form">
+        <input type="hidden" id="atracao-id">
+        <div class="form-group">
+          <label for="atracao-nome">Nome da Atração</label>
+          <input type="text" id="atracao-nome" required placeholder="Ex: Montanha-Russa">
+        </div>
+        <div class="form-group">
+          <label for="atracao-tipo">Tipo</label>
+          <select id="atracao-tipo" required>
+            <option value="montanha-russa">Montanha-Russa</option>
+            <option value="carrossel">Carrossel</option>
+            <option value="radical">Radical</option>
+            <option value="infantil">Infantil</option>
+            <option value="aquatico">Aquático</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="atracao-capacidade">Capacidade</label>
+          <input type="number" id="atracao-capacidade" min="1" required placeholder="Número de passageiros">
+        </div>
+        <div class="form-group">
+          <label for="atracao-fila">Fila Atual</label>
+          <input type="number" id="atracao-fila" min="0" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label for="atracao-status">Status</label>
+          <select id="atracao-status" required>
+            <option value="operando">Operando</option>
+            <option value="manutencao">Manutenção</option>
+            <option value="fechado">Fechado</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-save">Salvar Atração</button>
+          <button type="button" class="btn btn-cancel" onclick="closeAtracaoModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
