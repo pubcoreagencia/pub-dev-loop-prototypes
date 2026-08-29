@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manicure Pro - Gestão de Rotina</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-spa"></i> Manicure Pro</h1>
+            <p>Gestão completa para sua rotina de manicure independente</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="showTab('dashboard')">
+                <i class="fas fa-home"></i> Dashboard
+            </button>
+            <button class="tab-btn" onclick="showTab('clients')">
+                <i class="fas fa-users"></i> Clientes
+            </button>
+            <button class="tab-btn" onclick="showTab('schedule')">
+                <i class="fas fa-calendar-alt"></i> Agenda
+            </button>
+            <button class="tab-btn" onclick="showTab('services')">
+                <i class="fas fa-list-alt"></i> Serviços
+            </button>
+            <button class="tab-btn" onclick="showTab('reminders')">
+                <i class="fas fa-bell"></i> Lembretes
+            </button>
+        </nav>
+
+        <main>
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Hoje</h3>
+                            <p id="today-appointments">0 agendamentos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Esta Semana</h3>
+                            <p id="week-appointments">0 agendamentos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Clientes</h3>
+                            <p id="total-clients">0 clientes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Receita Esta Semana</h3>
+                            <p id="week-revenue">R$ 0,00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Próximos Agendamentos</h3>
+                            <button class="btn-primary" onclick="showTab('schedule')">Ver Todos</button>
+                        </div>
+                        <div class="card-body" id="dashboard-appointments">
+                            <p class="empty-state">Nenhum agendamento encontrado</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Clientes Recentes</h3>
+                            <button class="btn-primary" onclick="showTab('clients')">Ver Todos</button>
+                        </div>
+                        <div class="card-body" id="dashboard-clients">
+                            <p class="empty-state">Nenhum cliente cadastrado</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Lembretes de Hoje</h3>
+                            <button class="btn-primary" onclick="showTab('reminders')">Ver Todos</button>
+                        </div>
+                        <div class="card-body" id="dashboard-reminders">
+                            <p class="empty-state">Nenhum lembrete para hoje</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clients Tab -->
+            <div id="clients" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Gerenciar Clientes</h3>
+                        <button class="btn-primary" onclick="openClientModal()">
+                            <i class="fas fa-plus"></i> Novo Cliente
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-bar">
+                            <input type="text" id="client-search" placeholder="Buscar clientes..." onkeyup="searchClients()">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="clients-list" id="clients-list">
+                            <!-- Clientes serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Tab -->
+            <div id="schedule" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Agenda</h3>
+                        <button class="btn-primary" onclick="openAppointmentModal()">
+                            <i class="fas fa-plus"></i> Novo Agendamento
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="schedule-controls">
+                            <button class="btn-secondary" onclick="previousWeek()">← Semana Anterior</button>
+                            <h3 id="current-week">Semana de 1º de Janeiro de 2024</h3>
+                            <button class="btn-secondary" onclick="nextWeek()">Próxima Semana →</button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Calendário será gerado aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Tab -->
+            <div id="services" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Gerenciar Serviços</h3>
+                        <button class="btn-primary" onclick="openServiceModal()">
+                            <i class="fas fa-plus"></i> Novo Serviço
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="services-list" id="services-list">
+                            <!-- Serviços serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reminders Tab -->
+            <div id="reminders" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Gerenciar Lembretes</h3>
+                        <button class="btn-primary" onclick="openReminderModal()">
+                            <i class="fas fa-plus"></i> Novo Lembrete
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="reminders-list" id="reminders-list">
+                            <!-- Lembretes serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="client-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="client-modal-title">Novo Cliente</h3>
+                <span class="close" onclick="closeClientModal()">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="client-form">
+                    <div class="form-group">
+                        <label for="client-name">Nome Completo</label>
+                        <input type="text" id="client-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-phone">Telefone</label>
+                        <input type="tel" id="client-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-email">Email</label>
+                        <input type="email" id="client-email">
+                    </div>
+                    <div class="form-group">
+                        <label for="client-notes">Observações</label>
+                        <textarea id="client-notes"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeClientModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="appointment-modal-title">Novo Agendamento</h3>
+                <span class="close" onclick="closeAppointmentModal()">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="appointment-client">Cliente</label>
+                        <select id="appointment-client" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment-service">Serviço</label>
+                        <select id="appointment-service" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment-date">Data</label>
+                        <input type="date" id="appointment-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment-time">Hora</label>
+                        <input type="time" id="appointment-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment-notes">Observações</label>
+                        <textarea id="appointment-notes"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeAppointmentModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Agendar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="service-modal-title">Novo Serviço</h3>
+                <span class="close" onclick="closeServiceModal()">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="service-form">
+                    <div class="form-group">
+                        <label for="service-name">Nome do Serviço</label>
+                        <input type="text" id="service-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-price">Preço (R$)</label>
+                        <input type="number" id="service-price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-duration">Duração (minutos)</label>
+                        <input type="number" id="service-duration" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-description">Descrição</label>
+                        <textarea id="service-description"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeServiceModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="reminder-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="reminder-modal-title">Novo Lembrete</h3>
+                <span class="close" onclick="closeReminderModal()">×</span>
+            </div>
+            <div class="modal-body">
+                <form id="reminder-form">
+                    <div class="form-group">
+                        <label for="reminder-title">Título</label>
+                        <input type="text" id="reminder-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-date">Data</label>
+                        <input type="date" id="reminder-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-time">Hora</label>
+                        <input type="time" id="reminder-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-notes">Observações</label>
+                        <textarea id="reminder-notes"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeReminderModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
