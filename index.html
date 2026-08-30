@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Premium — Estilo & Tradição</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%EF%B8%8F%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="6" cy="6" r="3"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                        <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                        <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">Barbearia</span>
+                    <span class="logo-tagline">PREMIUM</span>
+                </div>
+            </a>
+
+            <nav class="nav">
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#barbeiros" class="nav-link">Barbeiros</a>
+                <a href="#agendamento" class="nav-link">Agendar</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+
+            <button class="cta-btn" onclick="scrollToBooking()">
+                <span>AGENDAR</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="badge-line"></span>
+                    <span class="badge-text">DESDE 2010</span>
+                    <span class="badge-line"></span>
+                </div>
+                <h1 class="hero-title">
+                    Onde <em>Estilo</em><br>
+                    Encontra <em>Tradição</em>
+                </h1>
+                <p class="hero-description">
+                    Mais que cortes, criamos experiências. Barbearia tradicional com atendimento moderno, 
+                    barbeiros premiados e um ambiente que respira história.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToBooking()">
+                        Agendar Horário
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToServices()">
+                        Ver Serviços
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value" data-counter="14">0</span>
+                        <span class="stat-label">Anos</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value" data-counter="8500">0</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value" data-counter="5">0</span>
+                        <span class="stat-label">Barbeiros</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-decor">
+                        <span>✂</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-label">Próximo horário disponível</p>
+                        <p class="card-time" id="nextSlot">--:--</p>
+                        <p class="card-day" id="nextSlotDay">Selecione uma data</p>
+                    </div>
+                </div>
+                <div class="floating-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    <div>
+                        <strong>4.9/5</strong>
+                        <span>+500 avaliações</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">NOSSOS SERVIÇOS</span>
+                <h2 class="section-title">Serviços <em>Premium</em></h2>
+                <p class="section-description">
+                    Cada serviço é uma experiência única, realizada por profissionais especializados 
+                    com produtos de alta qualidade.
+                </p>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+                <!-- Preenchido por JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbeiros -->
+    <section class="barbeiros" id="barbeiros">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">NOSSA EQUIPE</span>
+                <h2 class="section-title">Mestres <em>Barbeiros</em></h2>
+                <p class="section-description">
+                    Profissionais com anos de experiência, prontos para transformar seu visual.
+                </p>
+            </div>
+
+            <div class="barbeiros-grid">
+                <div class="barbeiro-card">
+                    <div class="barbeiro-avatar">
+                        <span>RS</span>
+                    </div>
+                    <h3 class="barbeiro-name">Rafael Santos</h3>
+                    <p class="barbeiro-role">Master Barber</p>
+                    <div class="barbeiro-specialties">
+                        <span>Cortes Clássicos</span>
+                        <span>Barba</span>
+                    </div>
+                </div>
+                <div class="barbeiro-card">
+                    <div class="barbeiro-avatar avatar-2">
+                        <span>LM</span>
+                    </div>
+                    <h3 class="barbeiro-name">Lucas Martins</h3>
+                    <p class="barbeiro-role">Senior Barber</p>
+                    <div class="barbeiro-specialties">
+                        <span>Degradê</span>
+                        <span>Pigmentação</span>
+                    </div>
+                </div>
+                <div class="barbeiro-card">
+                    <div class="barbeiro-avatar avatar-3">
+                        <span>PA</span>
+                    </div>
+                    <h3 class="barbeiro-name">Pedro Almeida</h3>
+                    <p class="barbeiro-role">Style Expert</p>
+                    <div class="barbeiro-specialties">
+                        <span>Modernos</span>
+                        <span>Tratamentos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendamento -->
+    <section class="booking" id="agendamento">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">AGENDAMENTO</span>
+                <h2 class="section-title">Reserve seu <em>Horário</em></h2>
+                <p class="section-description">
+                    Escolha o serviço, a data e o horário. Rápido, simples e sem complicação.
+                </p>
+            </div>
+
+            <div class="booking-container">
+                <!-- Stepper -->
+                <div class="stepper">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Serviço</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Data & Hora</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Seus Dados</span>
+                    </div>
+                </div>
+
+                <!-- Step 1: Serviço -->
+                <div class="booking-step active" data-step="1">
+                    <h3 class="step-title">Escolha o serviço</h3>
+                    <div class="services-list" id="bookingServices">
+                        <!-- Preenchido por JS -->
+                    </div>
+                </div>
+
+                <!-- Step 2: Data e Hora -->
+                <div class="booking-step" data-step="2">
+                    <h3 class="step-title">Escolha data e horário</h3>
+                    <div class="datetime-container">
+                        <div class="calendar-wrapper">
+                            <div class="calendar-header">
+                                <button class="calendar-nav" id="prevMonth" aria-label="Mês anterior">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="15 18 9 12 15 6"/>
+                                    </svg>
+                                </button>
+                                <h4 class="calendar-title" id="calendarTitle">Janeiro 2025</h4>
+                                <button class="calendar-nav" id="nextMonth" aria-label="Próximo mês">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="calendar-weekdays">
+                                <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                            </div>
+                            <div class="calendar-days" id="calendarDays">
+                                <!-- Preenchido por JS -->
+                            </div>
+                        </div>
+
+                        <div class="timeslots-wrapper">
+                            <h4 class="timeslots-title">Horários disponíveis</h4>
+                            <div class="timeslots" id="timeSlots">
+                                <p class="timeslots-empty">Selecione uma data para ver os horários</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Dados -->
+                <div class="booking-step" data-step="3">
+                    <h3 class="step-title">Seus dados</h3>
+                    <form class="booking-form" id="bookingForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clientName">Nome completo *</label>
+                                <input type="text" id="clientName" name="clientName" required placeholder="Seu nome">
+                                <span class="form-error" id="nameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="clientPhone">Telefone *</label>
+                                <input type="tel" id="clientPhone" name="clientPhone" required placeholder="(00) 00000-0000">
+                                <span class="form-error" id="phoneError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">E-mail</label>
+                            <input type="email" id="clientEmail" name="clientEmail" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientNotes">Observações</label>
+                            <textarea id="clientNotes" name="clientNotes" rows="3" placeholder="Alguma preferência ou observação especial?"></textarea>
+                        </div>
+
+                        <div class="booking-summary">
+                            <h4>Resumo do agendamento</h4>
+                            <div class="summary-row">
+                                <span>Serviço:</span>
+                                <strong id="summaryService">—</strong>
+                            </div>
+                            <div class="summary-row">
+                                <span>Data:</span>
+                                <strong id="summaryDate">—</strong>
+                            </div>
+                            <div class="summary-row">
+                                <span>Horário:</span>
+                                <strong id="summaryTime">—</strong>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <strong id="summaryPrice">—</strong>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="booking-nav">
+                    <button class="btn-secondary" id="prevBtn" style="visibility: hidden;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="12" x2="5" y2="12"/>
+                            <polyline points="12 19 5 12 12 5"/>
+                        </svg>
+                        Voltar
+                    </button>
+                    <button class="btn-primary" id="nextBtn">
+                        Continuar
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horário -->
+    <section class="horario" id="contato">
+        <div class="container">
+            <div class="horario-grid">
+                <div class="horario-card">
+                    <div class="horario-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Horário de Funcionamento</h3>
+                    <ul class="horario-list">
+                        <li><span>Segunda a Sexta</span><span>09:00 — 20:00</span></li>
+                        <li><span>Sábado</span><span>09:00 — 18:00</span></li>
+                        <li class="closed"><span>Domingo</span><span>Fechado</span></li>
+                    </ul>
+                </div>
+
+                <div class="horario-card">
+                    <div class="horario-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Localização</h3>
+                    <p class="horario-info">
+                        Rua das Tesouras, 123<br>
+                        Centro — São Paulo, SP<br>
+                        CEP 01000-000
+                    </p>
+                    <a href="#" class="horario-link">Ver no mapa →</a>
+                </div>
+
+                <div class="horario-card">
+                    <div class="horario-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Contato</h3>
+                    <p class="horario-info">
+                        <a href="tel:+5511999999999">(11) 99999-9999</a><br>
+                        <a href="mailto:contato@barbearia.com">contato@barbearia.com</a><br>
+                        @barbeariapremium
+                    </p>
+                    <a href="#" class="horario-link">WhatsApp →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="6" cy="6" r="3"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                            <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                            <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Barbearia</span>
+                        <span class="logo-tagline">PREMIUM</span>
+                    </div>
+                </div>
+                <p>Estilo, tradição e cuidado em cada detalhe.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Barbearia Premium. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            </div>
+            <h2>Agendamento Confirmado!</h2>
+            <p id="modalMessage">Seu horário foi reservado com sucesso.</p>
+            <div class="modal-details" id="modalDetails"></div>
+            <button class="btn-primary" onclick="closeModal()">OK, Entendi</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
