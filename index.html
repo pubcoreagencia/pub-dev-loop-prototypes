@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Eletricista</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Dashboard do Eletricista</h1>
+            <p>Bem-vindo, João!</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Serviços do Mês</h3>
+                <p class="stat-number">12</p>
+            </div>
+            <div class="stat-card">
+                <h3>Receita Total</h3>
+                <p class="stat-number">R$ 4.800,00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pendentes</h3>
+                <p class="stat-number">3</p>
+            </div>
+        </div>
+        
+        <div class="services-section">
+            <div class="section-header">
+                <h2>Meus Serviços</h2>
+                <button id="addServiceBtn" class="btn-primary">Adicionar Serviço</button>
+            </div>
+            
+            <div class="services-list" id="servicesList">
+                <div class="service-item">
+                    <h3>Instalação Elétrica Residencial</h3>
+                    <p>Cliente:Maria Silva</p>
+                    <p>Data: 15/06/2023</p>
+                    <span class="status completed">Concluído</span>
+                </div>
+                <div class="service-item">
+                    <h3>Reparos em Quadra de Energia</h3>
+                    <p>Cliente:Pedro Santos</p>
+                    <p>Data: 18/06/2023</p>
+                    <span class="status pending">Pendente</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para adicionar serviço -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Novo Serviço</h2>
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label for="serviceName">Nome do Serviço:</label>
+                    <input type="text" id="serviceName" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientName">Nome do Cliente:</label>
+                    <input type="text" id="clientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceDate">Data:</label>
+                    <input type="date" id="serviceDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceStatus">Status:</label>
+                    <select id="serviceStatus">
+                        <option value="pending">Pendente</option>
+                        <option value="completed">Concluído</option>
+                        <option value="in-progress">Em Andamento</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Salvar Serviço</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
