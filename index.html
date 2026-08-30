@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EletricistaApp</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>⚡ EletricistaApp</h1>
+    <nav>
+      <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="clients">Clients</button>
+      <button class="nav-btn" data-view="budget">Budget</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Dashboard -->
+    <section id="dashboard" class="view active">
+      <h2>Dashboard</h2>
+      <div class="stats">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-clients">0</span>
+          <span class="stat-label">Clients</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-budgets">0</span>
+          <span class="stat-label">Budgets</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-revenue">R$ 0</span>
+          <span class="stat-label">Total Revenue</span>
+        </div>
+      </div>
+      <div class="recent">
+        <h3>Recent Budgets</h3>
+        <ul id="recent-budgets"></ul>
+      </div>
+    </section>
+
+    <!-- Clientes -->
+    <section id="clients" class="view">
+      <h2>Clients</h2>
+      <div class="form-section">
+        <h3>Cadastre um novo cliente</h3>
+        <form id="client-form">
+          <input type="text" id="client-name" placeholder="Name *" required>
+          <input type="tel" id="client-phone" placeholder="Phone">
+          <input type="email" id="client-email" placeholder="Email">
+          <input type="text" id="client-address" placeholder="Address">
+          <button type="submit">Save</button>
+        </form>
+      </div>
+      <div class="list-section">
+        <h3>Client List</h3>
+        <ul id="client-list"></ul>
+      </div>
+    </section>
+
+    <!-- Orçamento -->
+    <section id="budget" class="view">
+      <h2>Orçamento</h2>
+      <form id="budget-form">
+        <div class="form-group">
+          <label for="budget-client">Client *</label>
+          <select id="budget-client" required>
+            <option value="">Select a client</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget-service">Service Description *</label>
+          <textarea id="budget-service" placeholder="Describe the service needed..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="budget-materials">Materials Cost (R$)</label>
+          <input type="number" id="budget-materials" min="0" step="0.01" value="0">
+        </div>
+        <div class="form-group">
+          <label for="budget-labor">Labor Cost (R$)</label>
+          <input type="number" id="budget-labor" min="0" step="0.01" value="0">
+        </div>
+        <div class="form-group">
+          <label for="budget-total">Total (R$)</label>
+          <input type="text" id="budget-total" readonly>
+        </div>
+        <button type="submit">Generate Budget</button>
+      </form>
+      <div class="list-section">
+        <h3>Budget History</h3>
+        <ul id="budget-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
