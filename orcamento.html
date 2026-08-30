@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EletricPro - Orçamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ EletricPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="orcamento.html">Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <div class="card">
+                    <h2 class="section-title">Criar Novo Orçamento</h2>
+                    <form id="form-orcamento" onsubmit="criarOrcamento(event)">
+                        <div class="form-group">
+                            <label for="cliente-select">Cliente</label>
+                            <select id="cliente-select" name="cliente" required>
+                                <option value="">Selecione um cliente</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Tipo de Serviço</label>
+                            <input type="text" id="servico" name="servico" required placeholder="Ex: Instalação elétrica, Manutenção, Reforma">
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição Detalhada</label>
+                            <textarea id="descricao" name="descricao" rows="4" required placeholder="Descreva o serviço a ser realizado..."></textarea>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="valor">Valor (R$)</label>
+                                <input type="number" id="valor" name="valor" step="0.01" min="0" required placeholder="0,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="prazo">Prazo (dias)</label>
+                                <input type="number" id="prazo" name="prazo" min="1" required placeholder="Ex: 5">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Criar Orçamento</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title">Orçamentos Criados</h2>
+                    <div id="lista-orcamentos">
+                        <!-- Orçamentos carregados aqui -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EletricPro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

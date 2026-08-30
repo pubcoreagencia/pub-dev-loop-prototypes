@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EletricPro - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ EletricPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="orcamento.html">Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <h2 class="section-title">Dashboard</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="icon">👥</span>
+                        <h3>Total de Clientes</h3>
+                        <p class="number" id="total-clientes">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="icon">📋</span>
+                        <h3>Orçamentos</h3>
+                        <p class="number" id="total-orcamentos">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="icon">✅</span>
+                        <h3>Aprovados</h3>
+                        <p class="number" id="orcamentos-aprovados">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="icon">💰</span>
+                        <h3>Receita Total</h3>
+                        <p class="number" id="receita-total">R$ 0,00</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Atalhos Rápidos</h2>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="clientes.html" class="btn btn-primary">+ Cadastrar Cliente</a>
+                        <a href="orcamento.html" class="btn btn-success">+ Criar Orçamento</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Resumo do Sistema</h2>
+                    <p>Bem-vindo ao EletricPro! Use o menu acima para navegar entre as seções.</p>
+                    <p style="margin-top: 15px; color: #64748b;">
+                        📌 Comece cadastrando seus clientes e depois crie orçamentos para os serviços.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EletricPro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

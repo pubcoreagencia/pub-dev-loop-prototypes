@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EletricPro - Clientes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ EletricPro</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="clientes.html">Clientes</a></li>
+                    <li><a href="orcamento.html">Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="dashboard">
+            <div class="container">
+                <div class="card">
+                    <h2 class="section-title">Cadastrar Novo Cliente</h2>
+                    <form id="form-cliente" onsubmit="cadastrarCliente(event)">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required placeholder="João Silva">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="joao@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" name="endereco" required placeholder="Rua das Flores, 123 - Bairro">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar Cliente</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title">Lista de Clientes</h2>
+                    <div id="lista-clientes">
+                        <!-- Clientes carregados aqui -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EletricPro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
