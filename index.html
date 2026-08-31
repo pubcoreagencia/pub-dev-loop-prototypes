@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pato de Minas - Sistema de Gestão de Patos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐥 Pato de Minas 🐥</h1>
+            <p>Sistema de Gestão de Patos</p>
+        </header>
+
+        <main>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total de Patos</h3>
+                    <p class="stat-value" id="total-ducks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Patos Saudáveis</h3>
+                    <p class="stat-value healthy" id="healthy-ducks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Patos Doentes</h3>
+                    <p class="stat-value sick" id="sick-ducks">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Patos Vendidos</h3>
+                    <p class="stat-value sold" id="sold-ducks">0</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="add-duck-btn" class="btn">Adicionar Novo Pato</button>
+                <button id="random-feed-btn" class="btn secondary">Alimentar Aleatoriamente</button>
+                <button id="health-check-btn" class="btn secondary">Verificar Saúde</button>
+            </div>
+
+            <div class="duck-container" id="duck-container">
+                <!-- Patos serão adicionados aqui -->
+            </div>
+        </main>
+
+        <footer>
+            <p>Pato de Minas © 2025 | Sistema de Gestão Avançada de Patos</p>
+        </footer>
+    </div>
+
+    <!-- Modal para adicionar novo pato -->
+    <div id="add-duck-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Adicionar Novo Pato</h2>
+            <form id="add-duck-form">
+                <div class="form-group">
+                    <label for="duck-name">Nome do Pato:</label>
+                    <input type="text" id="duck-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="duck-breed">Raça:</label>
+                    <select id="duck-breed">
+                        <option value="dux">Marreco Dux</option>
+                        <option value="pen-bred">Pato Marrom</option>
+                        <option value="peking">Pato de Pequim</option>
+                        <option value="caique">Pato Caique</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="duck-age">Idade (meses):</label>
+                    <input type="number" id="duck-age" min="0" max="120" required>
+                </div>
+                <div class="form-group">
+                    <label>Estado de Saúde:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="health" value="healthy" checked> Saudável
+                        </label>
+                        <label>
+                            <input type="radio" name="health" value="sick"> Doente
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Adicionar Pato</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para detalhes do pato -->
+    <div id="duck-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Detalhes do Pato</h2>
+            <div id="duck-details">
+                <!-- Detalhes do pato serão preenchidos aqui -->
+            </div>
+            <div class="duck-actions">
+                <button id="sell-duck-btn" class="btn">Marcar como Vendido</button>
+                <button id="heal-duck-btn" class="btn secondary">Curar Pato</button>
+                <button id="delete-duck-btn" class="btn danger">Remover Pato</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
