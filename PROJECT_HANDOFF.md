@@ -1,11 +1,45 @@
-# PROJECT_HANDOFF
+# PROJETO: Landing Page - Carlton Tobacco
 
-Placeholder hand‑off document. When applying the template to a concrete project, rename this file to `<PROJECT>_HANDOFF.md` and fill in:
+## Resumo do Estado Atual
+Landing page completa e funcional para o cigarro Carlton, pronta para deploy. A página foi criada em HTML com CSS e JavaScript puro - sem dependências externas, garantindo compatibilidade total.
 
-- Current state summary
-- Outstanding tasks
-- Owner(s) and contact information
-- Important URLs (repo, issue tracker, deployment)
-- Known blockers
+## Arquivos Criados
+- `index.html` - Landing page completa com design premium e elementos interativos
 
-The file purpose is to provide a **single source of truth** for anyone picking up the project after an interruption.
+## Detalhes da Versão
+- **Plataforma**: Web (HTML5, CSS3, JavaScript ES6)
+- **Layout**: Responsivo (desktop, tablet, mobile)
+- **Design**: Dark theme com toques dourados (cores da marca)
+- **Seções**:
+  - Hero Banner com navegação fixa
+  - Packshot ilustrativo do produto
+  - História da marca (1895)
+  - Filosofia do negócio
+  - Variantes (Classic, Gold, Silver)
+  - Processo de fabricação
+  - Call to Action
+  - Rodapé completo
+
+## Características Técnicas
+- Fonte Playfair Display para headings (elegância serifada)
+- Fonte Lato para textos corpo (clareza moderna)
+- Animações de scroll e transições hover
+- Navegação suave (scroll behavior)
+- Design responsivo com media queries
+- Ícones SVG inline
+- Warning legal para mercados regulados
+
+## URLs Úteis
+- Visualização local: Abra `index.html` em qualquer navegador moderno
+- Tamanho final: ~23KB (compacto, sem otimização extra)
+
+## Próximos Passos (Opcionais)
+- [ ] Adicionar imagens reais dos produtos
+- [ ] Configurar formulário de contato
+- [ ] Otimizar para SEO (meta tags adicionais)
+- [ ] Adicionar integração com redes sociais
+- [ ] Configurar analytics
+
+## Propriedade
+- Criado especialmente para Carlton Tobacco
+- Projeto sem dependências de build (zero configuração)

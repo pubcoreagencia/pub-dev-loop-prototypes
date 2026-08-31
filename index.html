@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlton - Elegância em Cada Trago</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A227;
+            --gold-light: #E8D5A3;
+            --black: #0A0A0A;
+            --dark: #1A1A1A;
+            --white: #F5F5F5;
+            --gray: #888888;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            transition: background 0.3s;
+        }
+
+        nav.scrolled {
+            background: var(--black);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-filled {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-filled:hover {
+            background: var(--gold-light);
+        }
+
+        /* Packshot Section */
+        .packshot {
+            padding: 120px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+            background: var(--dark);
+        }
+
+        .packshot-image {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .packshot-image .cigarette-pack {
+            width: 300px;
+            height: 420px;
+            background: linear-gradient(145deg, #2A2A2A 0%, #1A1A1A 100%);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cigarette-pack::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(180deg, #333 0%, #1A1A1A 100%);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .pack-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pack-tagline {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: var(--gray);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pack-stripes {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .pack-stripes span {
+            width: 4px;
+            height: 60px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        .packshot-content {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .packshot-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .packshot-content p {
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 150px 50px;
+            text-align: center;
+            background: var(--black);
+            position: relative;
+        }
+
+        .philosophy::before {
+            content: '"';
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 15rem;
+            color: rgba(201, 162, 39, 0.1);
+            line-height: 1;
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .philosophy p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 2;
+        }
+
+        /* Variants Section */
+        .variants {
+            padding: 120px 50px;
+            background: var(--dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .variant-card {
+            background: var(--black);
+            padding: 50px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .variant-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .variant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .variant-type {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .variant-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 150px 50px;
+            background: var(--black);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .process-step h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 150px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--black) 100%);
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 50px 40px;
+            background: var(--black);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-column h5 {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .warning {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .packshot {
+                flex-direction: column;
+                gap: 60px;
+            }
+            
+            .variants-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .packshot-content h2,
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">CARLTON</div>
+        <ul class="nav-links">
+            <li><a href="#historia">História</a></li>
+            <li><a href="#variantes">Variantes</a></li>
+            <li><a href="#qualidade">Qualidade</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Tradição desde 1895</p>
+            <h1>CARLTON</h1>
+            <p>Uma experiência de fumar refinada,crafted com os mais selectos tabacos do mundo. Elegância em cada trago.</p>
+            <a href="#historia" class="btn btn-filled">Descubra a Qualidade</a>
+        </div>
+    </section>
+
+    <!-- Packshot Section -->
+    <section class="packshot" id="historia">
+        <div class="packshot-image">
+            <div class="cigarette-pack">
+                <div class="pack-logo">C</div>
+                <div class="pack-tagline">Premium Tobacco</div>
+                <div class="pack-stripes">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="packshot-content">
+            <p class="section-label">Desde 1895</p>
+            <h2>Uma História de<br>Excelência e Sabor</h2>
+            <p>Criado pelos mestres tabacareiros da Carolina do Norte, Carlton representa o pináculo da arte de fumar. Cada cigarro é meticulosamente handcrafted usandotabacos flue-cured selecionados das melhores regiões dos Estados Unidos.</p>
+            <a href="#variantes" class="btn">Explore Nossas Variantes</a>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+        <div class="philosophy-content">
+            <p class="section-label">Nossa Filosofia</p>
+            <h2>"A verdadeira qualidade não se apressa. Cada Carlton é uma obra-prima do tempo."</h2>
+            <p>Por mais de um século, mantemos nosso compromisso inabalável com a excelência. Do cultivo à sua mão, cada etapa do processo Carlton refleja nossa dedicação à tradição e perfeição.</p>
+        </div>
+    </section>
+
+    <!-- Variants Section -->
+    <section class="variants" id="variantes">
+        <div class="section-header">
+            <p class="section-label">Nossas Criações</p>
+            <h2>Variantes Carlton</h2>
+            <p>Uma coleção de experiências smoking distintas, cada uma com seu próprio caráter e personalidade.</p>
+        </div>
+        <div class="variants-grid">
+            <div class="variant-card">
+                <h3 class="variant-name">Classic</h3>
+                <p class="variant-type">Full Flavor</p>
+                <p class="variant-description">O original Carlton. Tabaco puro, sabor intenso e uma experiência de fumar incomparável. Para os conhecedores que apreciam a tradição.</p>
+            </div>
+            <div class="variant-card">
+                <h3 class="variant-name">Gold</h3>
+                <p class="variant-type">Premium Blend</p>
+                <p class="variant-description">Uma mistura exclusiva de tabacos turcos e virginia, terminada com notas sutis de cacau e mel. Luxo em cada tragada.</p>
+            </div>
+            <div class="variant-card">
+                <h3 class="variant-name">Silver</h3>
+                <p class="variant-type">Light</p>
+                <p class="variant-description">Para quem busca elegância com suavidade. Mesmo sabor Carlton, com um toque mais leve e refrescante.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="qualidade">
+        <div class="section-header">
+            <p class="section-label">O Processo</p>
+            <h2>Excelência em Cada Etapa</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h4>Cultivo</h4>
+                <p>Tabacos cultivados em terras selecionadas sob condições climáticas ideais.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h4>Cura</h4>
+                <p>Processo de cura tradicional que desenvolve os sabores complexos característicos.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h4>Mistura</h4>
+                <p>Master blenders criam nossas misturas proprietárias com décadas de experiência.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h4>Produção</h4>
+                <p>Manufatura de precisão com os mais altos padrões de controle de qualidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contato">
+        <div class="cta-content">
+            <h2>Experimente o<br>Diferencial Carlton</h2>
+            <p>Junte-se a gerações de conocisseurs que escolheram Carlton como seu companheiro de momentos especiais.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-filled">Encontre Carlton</a>
+                <a href="#" class="btn">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">CARLTON</div>
+                <p>Tradição e excelência em cada cigarro desde 1895. Carlton - Uma escolha de conoisseurs.</p>
+            </div>
+            <div class="footer-column">
+                <h5>Produtos</h5>
+                <ul>
+                    <li><a href="#">Classic</a></li>
+                    <li><a href="#">Gold</a></li>
+                    <li><a href="#">Silver</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h5>Empresa</h5>
+                <ul>
+                    <li><a href="#">Nossa História</a></li>
+                    <li><a href="#">Qualidade</a></li>
+                    <li><a href="#">Sustentabilidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h5>Contato</h5>
+                <ul>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">Onde Comprar</a></li>
+                    <li><a href="#">Imprensa</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Carlton Tobacco Company. Todos os direitos reservados.</p>
+            <div class="warning">
+                ⚠️ ESTE PRODUTO CONTÉM NICOTINA, QUE CAUSA DEPENDÊNCIA. VENDA PROIBIDA PARA MENORES DE 18 ANOS.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
