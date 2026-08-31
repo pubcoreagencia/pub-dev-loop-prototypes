@@ -1,10 +1,19 @@
-# CURRENT_STATE
+# CURRENT_STATE — Atelie Rogerio Paes
 
-Placeholder for the current operational state of the project. When the template is used, replace with details such as:
+Estado operacional atual do projeto da **Atelie Rogerio Paes**.
 
-- Active branch
-- Latest commit SHA
-- Running services (if any)
-- Open issues or tickets
+## Branch ativa
+- `prototype/atelie-rogerio-paes/<id-da-sessao>`
 
-Do **not** include any secret values.
+## Último commit
+- (ver `git log` ou `.agent/CHECKPOINT.json`)
+
+## Serviços em execução
+- Nenhum serviço de aplicação rodando ainda. Apenas os scripts `devloop:*` do template.
+
+## Tickets / issues abertos
+- Definir stack do site.
+- Coletar materiais reais do ateliê (fotos, endereço, contatos, depoimentos de clientes).
+
+## Observação
+- Nenhum valor secreto é armazenado neste arquivo.

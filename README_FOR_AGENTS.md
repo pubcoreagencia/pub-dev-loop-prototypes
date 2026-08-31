@@ -1,13 +1,18 @@
-# README_FOR_AGENTS
+# README_FOR_AGENTS — Atelie Rogerio Paes
 
-This repository provides a **generic continuity template** for PUB DEV LOOP projects. It defines the minimal set of documentation and scripts required to enable any project to be resumed, validated, and checkpointed solely from the Git repository.
+Este repositório contém o **projeto digital da Atelie Rogerio Paes**, marcenaria artesanal comandada pelo marceneiro **Rogério Paes**, com **mais de 30 anos de experiência** no mercado de móveis sob medida, projetos residenciais e corporativos de madeira.
 
-## How to use
-1. Clone this template into your project repository.
-2. Rename the placeholder files (`PROJECT_HANDOFF.md`, `PROJECT_STATE.md`) to match your project's identifier.
-3. Add the `devloop:*` scripts to your `package.json` or as separate executable files.
-4. Run `npm run devloop:validate` (or the equivalent for your package manager) to ensure the project state is consistent.
-5. Use `npm run devloop:checkpoint` after each meaningful change to record the state.
-6. Use `npm run devloop:resume` on a fresh clone to reconstruct the last checkpoint.
+## Sobre a marca
+- **Nome comercial:** Atelie Rogerio Paes
+- **Ramo:** Marcenaria artesanal / móveis planejados
+- **Fundador / Mestre marceneiro:** Rogério Paes
+- **Experiência:** +30 anos no mercado
+- **Diferencial:** tradição artesanal, acabamento manual, projetos sob medida, atendimento personalizado do projeto à entrega.
 
-The template is intentionally **runtime‑agnostic** – it contains no references to specific providers, Docker, or secrets.
+## Como retomar o projeto
+1. Leia `MASTER_CONTEXT.md` para entender o escopo e a estratégia de continuidade.
+2. Leia `PROJECT_STATE.md` e `.agent/CURRENT_STATE.md` para entender o estado atual.
+3. Leia `PROJECT_HANDOFF.md` e `.agent/HANDOFF.md` para o que ficou pendente.
+4. Execute `./devloop-resume.sh` para validar o estado versionado.
+5. Faça suas alterações e rode `./devloop-validate.sh`.
+6. Ao final, execute `./devloop-checkpoint.sh` para gravar o novo estado.

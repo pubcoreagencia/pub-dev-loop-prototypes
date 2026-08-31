@@ -1,11 +1,11 @@
-# DEVLOOP_CONTEXT_STANDARD
+# DEVLOOP_CONTEXT_STANDARD — Atelie Rogerio Paes
 
-This specification defines the **standard continuity contract** for PUB DEV LOOP projects.
+Este repositório segue o **contrato padrão de continuidade** do PUB DEV LOOP, instanciado para o projeto da **Atelie Rogerio Paes**.
 
-### Required Files
+### Arquivos obrigatórios
 - `README_FOR_AGENTS.md`
 - `MASTER_CONTEXT.md`
-- `DEVLOOP_CONTEXT_STANDARD.md` (this file)
+- `DEVLOOP_CONTEXT_STANDARD.md` (este arquivo)
 - `PROJECT_HANDOFF.md`
 - `PROJECT_STATE.md`
 - `.agent/CURRENT_STATE.md`
@@ -15,10 +15,13 @@ This specification defines the **standard continuity contract** for PUB DEV LOOP
 - `devloop-checkpoint.sh`
 - `devloop-resume.sh`
 
-### Script Conventions
-All `devloop:*` scripts must:
-1. Detect which package manager is used (npm, pnpm, yarn) by looking for lockfiles.
-2. If a corresponding script exists in the project's `package.json` (e.g., `npm run devloop:validate`), invoke it.
-3. If no package manager is detected or the script is missing, output `NOT_APPLICABLE`.
+### Convenções dos scripts
+Todos os scripts `devloop:*` devem:
+1. Detectar o gerenciador de pacotes (npm, pnpm, yarn) pelos lockfiles.
+2. Se o script correspondente existir no `package.json` (ex.: `npm run devloop:validate`), invocá-lo.
+3. Se nenhum gerenciador for detectado ou o script não existir, retornar `NOT_APPLICABLE`.
 
-Each script must exit with code 0 on success, non‑zero on failure.
+Cada script deve sair com código 0 em sucesso, não-zero em falha.
+
+### Observação específica do projeto
+Como este repositório é a **base de continuidade da Atelie Rogerio Paes** (e não necessariamente um app compilável), `devloop-validate` é esperado retornar `NOT_APPLICABLE` para build/test/typecheck enquanto não houver um `package.json` com essas definições. Isso é o comportamento correto do template e **não** indica falha.
