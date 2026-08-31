@@ -3,106 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pato de Minas - Sistema de Gestão de Patos</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pato de Minas - Sistema de Gestão</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🐥 Pato de Minas 🐥</h1>
+    <header>
+        <div class="container">
+            <h1>🦆 Pato de Minas</h1>
             <p>Sistema de Gestão de Patos</p>
-        </header>
+        </div>
+    </header>
 
-        <main>
-            <div class="stats-container">
-                <div class="stat-card">
-                    <h3>Total de Patos</h3>
-                    <p class="stat-value" id="total-ducks">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Patos Saudáveis</h3>
-                    <p class="stat-value healthy" id="healthy-ducks">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Patos Doentes</h3>
-                    <p class="stat-value sick" id="sick-ducks">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Patos Vendidos</h3>
-                    <p class="stat-value sold" id="sold-ducks">0</p>
-                </div>
-            </div>
+    <nav>
+        <div class="container">
+            <button class="nav-btn active" data-tab="cadastro">+Cadastrar Pato</button>
+            <button class="nav-btn" data-tab="lista">Lista de Patos</button>
+            <button class="nav-btn" data-tab="estatisticas">Estatísticas</button>
+        </div>
+    </nav>
 
-            <div class="controls">
-                <button id="add-duck-btn" class="btn">Adicionar Novo Pato</button>
-                <button id="random-feed-btn" class="btn secondary">Alimentar Aleatoriamente</button>
-                <button id="health-check-btn" class="btn secondary">Verificar Saúde</button>
-            </div>
-
-            <div class="duck-container" id="duck-container">
-                <!-- Patos serão adicionados aqui -->
-            </div>
-        </main>
-
-        <footer>
-            <p>Pato de Minas © 2025 | Sistema de Gestão Avançada de Patos</p>
-        </footer>
-    </div>
-
-    <!-- Modal para adicionar novo pato -->
-    <div id="add-duck-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Adicionar Novo Pato</h2>
-            <form id="add-duck-form">
-                <div class="form-group">
-                    <label for="duck-name">Nome do Pato:</label>
-                    <input type="text" id="duck-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="duck-breed">Raça:</label>
-                    <select id="duck-breed">
-                        <option value="dux">Marreco Dux</option>
-                        <option value="pen-bred">Pato Marrom</option>
-                        <option value="peking">Pato de Pequim</option>
-                        <option value="caique">Pato Caique</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="duck-age">Idade (meses):</label>
-                    <input type="number" id="duck-age" min="0" max="120" required>
-                </div>
-                <div class="form-group">
-                    <label>Estado de Saúde:</label>
-                    <div class="radio-group">
-                        <label>
-                            <input type="radio" name="health" value="healthy" checked> Saudável
-                        </label>
-                        <label>
-                            <input type="radio" name="health" value="sick"> Doente
-                        </label>
+    <main class="container">
+        <!-- Aba de Cadastro -->
+        <section id="cadastro" class="tab-content active">
+            <h2>Cadastre um Novo Pato</h2>
+            <form id="formPato">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome do Pato *</label>
+                        <input type="text" id="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="raca">Raça *</label>
+                        <input type="text" id="raca" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idade">Idade (meses) *</label>
+                        <input type="number" id="idade" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="genero">Gênero *</label>
+                        <select id="genero" required>
+                            <option value="">Selecione</option>
+                            <option value="Macho">Macho</option>
+                            <option value="Fêmea">Fêmea</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="peso">Peso (kg) *</label>
+                        <input type="number" id="peso" step="0.1" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="saude">Estado de Saúde *</label>
+                        <select id="saude" required>
+                            <option value="">Selecione</option>
+                            <option value="Saudável">Saudável</option>
+                            <option value="Em tratamento">Em tratamento</option>
+                            <option value="Doente">Doente</option>
+                            <option value="Recuperando">Recuperando</option>
+                        </select>
                     </div>
                 </div>
-                <button type="submit" class="btn">Adicionar Pato</button>
+                <div class="form-group">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" rows="3" placeholder="Informações adicionais sobre o pato..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Cadastrar Pato</button>
+            </form>
+        </section>
+
+        <!-- Aba de Lista -->
+        <section id="lista" class="tab-content">
+            <div class="lista-header">
+                <h2>Lista de Patos</h2>
+                <div class="filtros">
+                    <input type="text" id="busca" placeholder="Buscar por nome ou raça...">
+                    <select id="filtroSaude">
+                        <option value="">Todos os estados</option>
+                        <option value="Saudável">Saudável</option>
+                        <option value="Em tratamento">Em tratamento</option>
+                        <option value="Doente">Doente</option>
+                        <option value="Recuperando">Recuperando</option>
+                    </select>
+                </div>
+            </div>
+            <div id="listaPatos" class="cards-container">
+            </div>
+        </section>
+
+        <!-- Aba de Estatísticas -->
+        <section id="estatisticas" class="tab-content">
+            <h2>Estatísticas do Rebanho</h2>
+            <div class="estatisticas-grid">
+                <div class="stat-card">
+                    <h3>Total de Patos</h3>
+                    <span class="stat-value" id="statTotal">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Saudáveis</h3>
+                    <span class="stat-value" id="statSaudaveis">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Em Tratamento</h3>
+                    <span class="stat-value" id="statTratamento">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Idade Média</h3>
+                    <span class="stat-value" id="statIdadeMedia">0</span>
+                    <span class="stat-unit">meses</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Distribuição por Raça</h3>
+                <div id="distribuicaoRaca" class="chart-bars">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Edição -->
+    <div id="modalEdicao" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Editar Pato</h2>
+            <form id="formEdicao">
+                <input type="hidden" id="editId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="editNome">Nome *</label>
+                        <input type="text" id="editNome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRaca">Raça *</label>
+                        <input type="text" id="editRaca" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editIdade">Idade (meses) *</label>
+                        <input type="number" id="editIdade" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGenero">Gênero *</label>
+                        <select id="editGenero" required>
+                            <option value="">Selecione</option>
+                            <option value="Macho">Macho</option>
+                            <option value="Fêmea">Fêmea</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPeso">Peso (kg) *</label>
+                        <input type="number" id="editPeso" step="0.1" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSaude">Estado de Saúde *</label>
+                        <select id="editSaude" required>
+                            <option value="">Selecione</option>
+                            <option value="Saudável">Saudável</option>
+                            <option value="Em tratamento">Em tratamento</option>
+                            <option value="Doente">Doente</option>
+                            <option value="Recuperando">Recuperando</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editObservacoes">Observações</label>
+                    <textarea id="editObservacoes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Atualizar Pato</button>
             </form>
         </div>
     </div>
 
-    <!-- Modal para detalhes do pato -->
-    <div id="duck-details-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Detalhes do Pato</h2>
-            <div id="duck-details">
-                <!-- Detalhes do pato serão preenchidos aqui -->
-            </div>
-            <div class="duck-actions">
-                <button id="sell-duck-btn" class="btn">Marcar como Vendido</button>
-                <button id="heal-duck-btn" class="btn secondary">Curar Pato</button>
-                <button id="delete-duck-btn" class="btn danger">Remover Pato</button>
-            </div>
+    <footer>
+        <div class="container">
+            <p>Pató de Minas &copy; 2024 - Sistema de Gestão de Patos</p>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
