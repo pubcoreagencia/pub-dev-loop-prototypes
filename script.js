@@ -180,16 +180,16 @@ function inicializarFiltros() {
 }
 
 function editarPato(id) {
-    patoEditando = patos.find(p => p.id === id);
+    patoEditando = patos.find(p => String(p.id) === String(id));
     if (!patoEditando) return;
     
     document.getElementById('editId').value = patoEditando.id;
-    document.getElementById('editNome').value = patoEditando.nome;
-    document.getElementById('editRaca').value = patoEditando.raca;
-    document.getElementById('editIdade').value = patoEditando.idade;
-    document.getElementById('editGenero').value = patoEditando.genero;
-    document.getElementById('editPeso').value = patoEditando.peso;
-    document.getElementById('editSaude').value = patoEditando.saude;
+    document.getElementById('editNome').value = patoEditando.nome || '';
+    document.getElementById('editRaca').value = patoEditando.raca || '';
+    document.getElementById('editIdade').value = patoEditando.idade || 0;
+    document.getElementById('editGenero').value = patoEditando.genero || 'Macho';
+    document.getElementById('editPeso').value = patoEditando.peso || 1;
+    document.getElementById('editSaude').value = patoEditando.saude || 'Saudável';
     document.getElementById('editObservacoes').value = patoEditando.observacoes || '';
     
     modalEdicao.style.display = 'flex';
@@ -199,7 +199,7 @@ formEdicao.addEventListener('submit', (e) => {
     e.preventDefault();
     
     const id = document.getElementById('editId').value;
-    const indice = patos.findIndex(p => p.id === id);
+    const indice = patos.findIndex(p => String(p.id) === String(id));
     
     if (indice === -1) return;
     
@@ -207,15 +207,16 @@ formEdicao.addEventListener('submit', (e) => {
         ...patos[indice],
         nome: document.getElementById('editNome').value,
         raca: document.getElementById('editRaca').value,
-        idade: parseInt(document.getElementById('editIdade').value),
+        idade: parseInt(document.getElementById('editIdade').value) || 0,
         genero: document.getElementById('editGenero').value,
-        peso: parseFloat(document.getElementById('editPeso').value),
+        peso: parseFloat(document.getElementById('editPeso').value) || 0,
         saude: document.getElementById('editSaude').value,
         observacoes: document.getElementById('editObservacoes').value
     };
     
     salvarPatos();
     atualizarLista();
+    atualizarEstatisticas();
     fecharModal();
     mostrarMensagem('Pato atualizado com sucesso!', 'success');
 });
@@ -225,9 +226,30 @@ function fecharModal() {
     patoEditando = null;
 }
 
-document.querySelector('.close-modal').addEventListener('click', fecharModal);
+// Global window bindings for onclick
+window.editarPato = editarPato;
+window.excluirPato = excluirPato;
+window.fecharModal = fecharModal;
+
+document.querySelector('.close-modal')?.addEventListener('click', fecharModal);
 modalEdicao.addEventListener('click', (e) => {
     if (e.target === modalEdicao) fecharModal();
+});
+
+// Event delegation fallback
+listaPatos?.addEventListener('click', (e) => {
+    const editBtn = e.target.closest('.btn-editar');
+    if (editBtn) {
+        const card = editBtn.closest('.card');
+        const id = card?.dataset?.id;
+        if (id) editarPato(id);
+    }
+    const delBtn = e.target.closest('.btn-excluir');
+    if (delBtn) {
+        const card = delBtn.closest('.card');
+        const id = card?.dataset?.id;
+        if (id) excluirPato(id);
+    }
 });
 
 // ===== EXCLUSÃO =====
