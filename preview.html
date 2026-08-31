@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview - Eletricista Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .preview-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .preview-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .preview-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .preview-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .preview-nav {
+            background: #1e40af;
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .preview-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            background: #3b82f6;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        .preview-nav a:hover {
+            background: #2563eb;
+        }
+        
+        .preview-content {
+            padding: 40px;
+        }
+        
+        .preview-section {
+            display: none;
+        }
+        
+        .preview-section.active {
+            display: block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-card li::before {
+            content: "✓";
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        
+        .screenshot {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            border: 2px dashed #cbd5e1;
+            text-align: center;
+        }
+        
+        .screenshot-code {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .tech-tag {
+            background: #e0f2fe;
+            color: #0c4a6e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1>⚡ Eletricista Pro</h1>
+            <p>Aplicação web completa para profissionais elétricos</p>
+        </div>
+        
+        <div class="preview-nav">
+            <a href="#dashboard">📊 Dashboard</a>
+            <a href="#features">✨ Funcionalidades</a>
+            <a href="#tech">💻 Tecnologias</a>
+            <a href="#code">📋 Código</a>
+        </div>
+        
+        <div class="preview-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="preview-section active">
+                <h2 style="margin-bottom: 20px; color: #1e3a8a;">Dashboard Instantâneo</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Serviços</h3>
+                        <p class="stat-value">42</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Clientes</h3>
+                        <p class="stat-value">28</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Receita Total</h3>
+                        <p class="stat-value">R$ 18.450,00</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot">
+                    <h3 style="color: #1e3a8a; margin-bottom: 15px;">Interface do Dashboard</h3>
+                    <div class="screenshot-code">
+                        ┌────────────────────────────────────┐
+                        │  ⚡ Eletricista Pro                │
+                        │  ┌──────────┬───────────────────┐  │
+                        │  │ Serviços │ Clientes            │  │
+                        │  │    42    │    28               │  │
+                        │  └──────────┴───────────────────┘  │
+                        │  Receita Total: R$ 18.450,00       │
+                        │  ┌──────────────────────────────┐   │
+                        │  │ Serviços Recentes            │   │
+                        │  │ • Reparação Elétrica - João  │   │
+                        │  │ • Instalação Ponto Lâmpada   │   │
+                        │  └──────────────────────────────┘   │
+                        └────────────────────────────────────┘
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Features Section -->
+            <section id="features" class="preview-section">
+                <h2 style="margin-bottom: 20px; color: #1e3a8a;">Funcionalidades</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>📊 Dashboard</h3>
+                        <ul>
+                            <li>Estatísticas em tempo real</li>
+                            <li>Serviços e clientes</li>
+                            <li>Receita total</li>
+                            <li>Serviços recentes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>💰 Orçamento</h3>
+                        <ul>
+                            <li>Calculadora de preços</li>
+                            <li>Aplicação de impostos</li>
+                            <li>Descontos personalizados</li>
+                            <li>Resultado formatado em R$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>📦 Materiais</h3>
+                        <ul>
+                            <li>Cálculo de cabos por distância</li>
+                            <li>Tipos de diâmetro (1-25mm²)</li>
+                            <li>Queda de tensão estimada</li>
+                            <li>Recomendações personalizadas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>👥 Clientes</h3>
+                        <ul>
+                            <li>Cadastro completo</li>
+                            <li>Telefone e email</li>
+                            <li>Endereço detalhado</li>
+                            <li>Exclusão de registro</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>🛠️ Serviços</h3>
+                        <ul>
+                            <li>Tipos: Instalação, Reparo, Manutenção</li>
+                            <li>Vincular a clientes</li>
+                        </ul>
+                        <ul>
+
+                            <li>Registro histórico</li>
+                            <li>Exclusão de serviço</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>🔢 Cálculos</h3>
+                        <ul>
+                            <li>Lei de Ohm (V=IR)</li>
+                            <li>Cálculo de corrente</li>
+                            <li>Cálculo de potência</li>
+                            <li>Tensão configurável</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tech Section -->
+            <section id="tech" class="preview-section">
+                <h2 style="margin-bottom: 20px; color: #1e3a8a;">Tecnologias</h2>
+                
+                <p style="margin-bottom: 20px; color: #64748b;">
+                    Esta aplicação utiliza as melhores práticas de desenvolvimento web moderno:
+                </p>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript Vanilla</span>
+                    <span class="tech-tag">LocalStorage</span>
+                    <span class="tech-tag">Responsive Design</span>
+                    <span class="tech-tag">Dark Mode</span>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 10px;">
+                    <h4 style="color: #1e3a8a; margin-bottom: 15px;">Recursos Técnicos</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #ddd;">✅ Trabalha 100% offline</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #ddd;">✅ Nenhuma dependência externa</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #ddd;">✅ Interface responsiva</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #ddd;">✅ Armazenamento local</li>
+                        <li style="padding: 8px 0;">✅ Design moderno com gradientes</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Code Section -->
+            <section id="code" class="preview-section">
+                <h2 style="margin-bottom: 20px; color: #1e3a8a;">Estrutura de Arquivos</h2>
+                
+                <div style="background: #1e293b; color: #94a3b8; padding: 25px; border-radius: 10px; font-family: 'Courier New', monospace;">
+                    <div style="margin-bottom: 15px;">eletricista-pro/</div>
+                    <div style="margin-left: 20px;">
+                        <div>├── <span style="color: #60a5fa;">index.html</span>         ← Interface principal</div>
+                        <div>├── <span style="color: #60a5fa;">styles.css</span>         ← Estilos com dark mode</div>
+                        <div>├── <span style="color: #60a5fa;">script.js</span>          ← Lógica da aplicação</div>
+                        <div style="margin-top: 10px;">└── <span style="color: #94a3b8;">README.md</span>           ← Documentação</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; background: #f0fdf4; border-left: 4px solid #22c55e; padding: 20px; border-radius: 0 10px 10px 0;">
+                    <h4 style="color: #166534; margin-bottom: 10px;">✅ Pronto para uso!</h4>
+                    <p style="color: #166534; margin: 0;">
+                        Apenas abra o arquivo <strong>index.html</strong> em qualquer navegador moderno.
+                        Todos os dados são salvos automaticamente no LocalStorage.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        // Navegação entre seções
+        const navLinks = document.querySelectorAll('.preview-nav a');
+        const sections = document.querySelectorAll('.preview-section');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
