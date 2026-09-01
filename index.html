@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Shop Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-cut"></i>
+                    <span>BarberHub</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-user"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-scissors"></i>
+                            <span>Services</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>Finance</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, John! Here's what's happening today.</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search appointments, customers...">
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User">
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Today's Appointments</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 15%
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>48</h3>
+                            <p>Total Customers</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 8%
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>$2,450</h3>
+                            <p>Revenue Today</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 23%
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>4.8</h3>
+                            <p>Rating</p>
+                            <span class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i> 2%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-btn" onclick="addAppointment()">
+                            <i class="fas fa-plus"></i>
+                            <span>New Appointment</span>
+                        </button>
+                        <button class="action-btn" onclick="addCustomer()">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add Customer</span>
+                        </button>
+                        <button class="action-btn" onclick="addService()">
+                            <i class="fas fa-scissors"></i>
+                            <span>New Service</span>
+                        </button>
+                        <button class="action-btn" onclick="viewReports()">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>View Reports</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="content-grid">
+                    <!-- Recent Appointments -->
+                    <div class="appointments-section">
+                        <div class="section-header">
+                            <h2>Recent Appointments</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="appointments-list">
+                            <div class="appointment-item">
+                                <div class="appointment-time">
+                                    <span class="time">10:00 AM</span>
+                                    <span class="date">Today</span>
+                                </div>
+                                <div class="appointment-customer">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Customer">
+                                    <div class="customer-info">
+                                        <h4>Michael Brown</h4>
+                                        <p>Classic Haircut + Beard Trim</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <span class="status confirmed">Confirmed</span>
+                                </div>
+                                <div class="appointment-action">
+                                    <button class="btn-small btn-primary">Start</button>
+                                </div>
+                            </div>
+
+                            <div class="appointment-item">
+                                <div class="appointment-time">
+                                    <span class="time">11:30 AM</span>
+                                    <span class="date">Today</span>
+                                </div>
+                                <div class="appointment-customer">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Customer">
+                                    <div class="customer-info">
+                                        <h4>Sarah Johnson</h4>
+                                        <p>Women's Cut</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <span class="status pending">Pending</span>
+                                </div>
+                                <div class="appointment-action">
+                                    <button class="btn-small btn-outline">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="appointment-item">
+                                <div class="appointment-time">
+                                    <span class="time">2:00 PM</span>
+                                    <span class="date">Today</span>
+                                </div>
+                                <div class="appointment-customer">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-c0343f7d6d1e?ixlib=rb-4.0.3&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Customer">
+                                    <div class="customer-info">
+                                        <h4>David Wilson</h4>
+                                        <p>Hot Towel Shave</p>
+                                    </div>
+                                </div>
+                                <div class="appointment-status">
+                                    <span class="status completed">Completed</span>
+                                </div>
+                                <div class="appointment-action">
+                                    <button class="btn-small btn-outline">Invoice</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Section -->
+                    <div class="calendar-section">
+                        <div class="section-header">
+                            <h2>Today's Schedule</h2>
+                            <div class="calendar-controls">
+                                <button class="btn-icon" id="prevDay">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span id="currentDate">Monday, January 15, 2024</span>
+                                <button class="btn-icon" id="nextDay">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-header">
+                                <div class="time-column"></div>
+                                <div class="day-column">
+                                    <div class="day-header">Monday</div>
+                                </div>
+                            </div>
+                            <div class="calendar-body">
+                                <div class="time-column">
+                                    <div class="time-slot">9:00</div>
+                                    <div class="time-slot">10:00</div>
+                                    <div class="time-slot">11:00</div>
+                                    <div class="time-slot">12:00</div>
+                                    <div class="time-slot">13:00</div>
+                                    <div class="time-slot">14:00</div>
+                                    <div class="time-slot">15:00</div>
+                                    <div class="time-slot">16:00</div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="calendar-day">
+                                        <div class="time-block" style="grid-row: 2/3;">
+                                            <div class="event-item">
+                                                <div class="event-time">10:00 - 10:45</div>
+                                                <div class="event-title">Michael Brown</div>
+                                                <div class="event-service">Classic Haircut</div>
+                                            </div>
+                                        </div>
+                                        <div class="time-block" style="grid-row: 4/5;">
+                                            <div class="event-item">
+                                                <div class="event-time">11:30 - 12:15</div>
+                                                <div class="event-title">Sarah Johnson</div>
+                                                <div class="event-service">Women's Cut</div>
+                                            </div>
+                                        </div>
+                                        <div class="time-block" style="grid-row: 6/7;">
+                                            <div class="event-item">
+                                                <div class="event-time">2:00 - 2:45</div>
+                                                <div class="event-title">David Wilson</div>
+                                                <div class="event-service">Hot Towel Shave</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
